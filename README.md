@@ -1,6 +1,8 @@
 # LeaderboardDB
 > LeaderboardDB is storage for sorted lists with custom field filters. Leaderboard uses the Redis RESP protocol.
 
+![LeaderboardDB Logo](https://github.com/fatihkahveci/leaderboard-db/300x300.png)
+
 ## Installation
 ```
 go get -u github.com/fatihkahveci/leaderboard-db
@@ -16,11 +18,11 @@ go get -u github.com/fatihkahveci/leaderboard-db
 
 | Command | Params | Example |
 | ------ | ------ |----------- |
-| add   | leaderbaoardKey, memberKey, score, [fields] (optional) | add diablo_3 user_1 123 character demon_hunter |
-| leaderbaord | leaderbaoardKey, start, stop, [fields] (optional) | leaderboard diablo_3 0 -1 character demon_hunter |
-| del    | leaderbaoardKey | del diablo_3 |
-| delmember    | leaderbaoardKey, key | del diablo_3 user_1 |
-| updatescore    | leaderbaoardKey, key, score | updatescore diablo_3 user_1 3 |
+| add   | leaderboardKey, memberKey, score, [fields] (optional) | add diablo_3 user_1 123 character demon_hunter |
+| leaderboard | leaderboardKey, start, stop, [fields] (optional) | leaderboard diablo_3 0 -1 character demon_hunter |
+| del    | leaderboardKey | del diablo_3 |
+| delmember    | leaderboardKey, key | del diablo_3 user_1 |
+| updatescore    | leaderboardKey, key, score | updatescore diablo_3 user_1 3 |
 
 ## Examples
 Let's say you need to store Diablo 3 player scores and need to filter character and country.
@@ -74,3 +76,7 @@ Then response will be:
 4) "user_3"
 5) "user_4"
 ```
+
+## Thanks
+
+Thanks for logo @eraydemirok
