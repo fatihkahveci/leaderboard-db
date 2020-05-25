@@ -1,7 +1,7 @@
 # LeaderboardDB
 > LeaderboardDB is storage for sorted lists with custom field filters. Leaderboard uses the Redis RESP protocol.
 
-![LeaderboardDB Logo](https://github.com/fatihkahveci/leaderboard-db/300x300.png)
+![LeaderboardDB Logo](https://github.com/fatihkahveci/leaderboard-db/blob/master/300x300.png)
 
 ## Installation
 ```
