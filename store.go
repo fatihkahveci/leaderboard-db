@@ -91,6 +91,9 @@ func (s *Store) DeleteMember(leaderboardName, key string) error {
 }
 
 func (s *Store) DeleteLeaderboard(leaderboardName string) error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
 	_, ok := s.Leaderboards[leaderboardName]
 	if !ok {
 		return errors.New("Leaderboard not found")
