@@ -119,6 +119,24 @@ func redconCommandNext(conn redcon.Conn, cmd redcon.Command) {
 
 		scoreString := fmt.Sprintf("%.2f", score)
 		conn.WriteString(scoreString)
+
+	case "rank":
+		if len(cmd.Args) < 3  {
+			writeRedconError(conn, errors.New("ERR wrong number of arguments for 'score' command"))
+		}
+
+		leaderboardName := string(cmd.Args[1])
+		key := string(cmd.Args[2])
+
+		rank, err := store.MemberRank(leaderboardName,key)
+		if err != nil {
+			conn.WriteNull()
+			return
+		}
+
+
+		conn.WriteInt(rank)
+
 	case "leaderboard":
 
 		if len(cmd.Args) < 4 || (len(cmd.Args)-2)%2 == 1 {

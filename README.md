@@ -23,6 +23,7 @@ go get -u github.com/fatihkahveci/leaderboard-db
 | del    | leaderboardKey | del diablo_3 |
 | delmember    | leaderboardKey, key | del diablo_3 user_1 |
 | updatescore    | leaderboardKey, key, score | updatescore diablo_3 user_1 3 |
+| rank    | leaderboardKey, key | rank diablo_3 user_1 |
 
 ## Examples
 Let's say you need to store Diablo 3 player scores and need to filter character and country.

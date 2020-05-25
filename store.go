@@ -121,6 +121,30 @@ func (s *Store) MemberScore(leaderboardName, key string) (float64, error) {
 	return member.Score, nil
 
 }
+
+func (s *Store) MemberRank(leaderboardName, key string) (int, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	leaderboard, ok := s.Leaderboards[leaderboardName]
+	if !ok {
+		return 0,errors.New("Leaderboard not found")
+	}
+	member, ok := leaderboard.Members[key]
+	if !ok {
+		return 0,errors.New("Member not found")
+	}
+
+	rank := 0
+	for index,val := range leaderboard.MembersIndex {
+		if val.Key == member.Key {
+			rank = index+1
+		}
+	}
+
+	return rank, nil
+
+}
 func (s *Store) UpdateMemberScore(leaderboardName, key string, score float64) error {
 	s.mu.Lock()
 	defer s.mu.Unlock()
@@ -137,7 +161,7 @@ func (s *Store) UpdateMemberScore(leaderboardName, key string, score float64) er
 	member.Score = member.Score + score
 
 	for index,val := range leaderboard.MembersIndex {
-		if val.Key == key {
+		if val.Key == member.Key {
 			leaderboard.MembersIndex[index].Score = leaderboard.MembersIndex[index].Score + score
 		}
 	}
