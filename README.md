@@ -89,7 +89,8 @@ Then response will be:
 5) "user_4"
 ```
 
-##Benchmark
+## Benchmark
+
 ```
 goos: darwin
 goarch: amd64

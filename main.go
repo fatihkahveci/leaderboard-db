@@ -57,11 +57,13 @@ func runRedcon() {
 
 func syncDb(store *Store, db *os.File) {
 	for {
-		time.Sleep(2 * time.Minute)
+		time.Sleep(5 * time.Minute)
 		saveDb(store,db)
 	}
 }
 
 func saveDb(store *Store, db *os.File) {
+	store.mu.Lock()
 	msgp.WriteFile(store, db)
+	store.mu.Unlock()
 }
