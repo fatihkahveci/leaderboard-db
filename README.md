@@ -89,8 +89,20 @@ Then response will be:
 5) "user_4"
 ```
 
+##Benchmark
+```
+goos: darwin
+goarch: amd64
+pkg: github.com/fatihkahveci/leaderboard-db
+BenchmarkStore_AddMember-12            	 7140470	       169 ns/op
+BenchmarkStore_UpdateMemberScore-12    	 9780445	       124 ns/op
+BenchmarkStore_GetSort-12              	 3768985	       383 ns/op
+BenchmarkStore_GetSortWithFilter-12    	 1391335	       809 ns/op
+BenchmarkStore_MemberRank-12           	13890780	        92.1 ns/op
+BenchmarkStore_MemberScore-12          	14312134	        71.9 ns/op
+```
+
 ## Todos
-- Tests
 - Docker Container for LeaderboardDB
 - Maybe Raft support?
 
