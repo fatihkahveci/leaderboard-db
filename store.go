@@ -40,18 +40,22 @@ func (s *Store) AddMember(leaderboardName string,key string, score float64, fiel
 	}
 
 
+	check := leaderboard.Members[key]
 	leaderboard.Members[key] = member
 
-	for i, v := range leaderboard.MembersIndex {
-		if key == v.Key  {
-			leaderboard.MembersIndex[i] = member.toIndex()
-			sort.Sort(leaderboard)
-			return
+	if check != nil {
+		for i, v := range leaderboard.MembersIndex {
+			if key == v.Key  {
+				leaderboard.MembersIndex[i] = member.toIndex()
+				//sort.Sort(leaderboard)
+				return
+			}
 		}
 	}
 
+
 	leaderboard.MembersIndex = append(leaderboard.MembersIndex, member.toIndex())
-	sort.Sort(leaderboard)
+	//sort.Sort(leaderboard)
 }
 
 func (s *Store) DeleteMember(leaderboardName, key string) error {
